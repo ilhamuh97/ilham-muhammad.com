@@ -93,7 +93,7 @@ export function Hero() {
               <FaGithub className="text-3xl" />
             </a>
             <a
-              href="mailto:ilhamuh97@gmail.com"
+              href="mailto:ilham_muhammad@hotmail.com"
               aria-label="Email"
               className="text-white hover:text-green-600 transition-colors"
             >
