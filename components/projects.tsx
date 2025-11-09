@@ -42,7 +42,7 @@ const projects = [
     status: "done",
   },
   {
-    slug: "Chat App",
+    slug: "chat-app",
     name: "Chat App",
     link: "https://chat-app-ie23.onrender.com/",
     techStack: ["Next.js", "Node.js", "Ant Design", "MongoDB", "express.js"],
