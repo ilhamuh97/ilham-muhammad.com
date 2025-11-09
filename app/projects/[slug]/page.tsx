@@ -61,7 +61,7 @@ The app guides users through four clear steps:
   {
     slug: "saso-ecommerce",
     name: "SASO E-Commerce",
-    link: null,
+    link: "https://saso.iwkz.de/",
     techStack: ["Next.js", "Node.js", "Ant Design", "MongoDB", "express.js"],
     description:
       "SASO E-Commerce is a food ordering website created for the annual SASO food festival by IWKZ e.V. First launched in 2022, it made ordering easier and faster for visitors, while helping vendors and admins manage orders and stock in real time. Its success led to the development of IW-Commerce, a more flexible system for various events.",
@@ -103,6 +103,41 @@ Because the first version worked well, it later became IW-Commerce — a more fl
       "/assets/Saso2.png",
       "/assets/Saso3.png",
       "/assets/Saso4.png",
+    ],
+  },
+  {
+    slug: "chat-app",
+    name: "Chat Application",
+    link: "https://chat-app-ie23.onrender.com",
+    techStack: ["React.js", "Node.js", "socket.io", "MongoDB", "express.js", "DaisyUI"],
+    description:
+      "A simple realtime chat application built using Socket.io for learning purposes.",
+    status: "done",
+    fullDescription: `This project is a realtime chat application that enables users to send and receive messages instantly through WebSocket communication using Socket.io. The system is designed to demonstrate the basic structure of modern web-based chat systems, combining a React frontend with a Node.js and Express backend. MongoDB is used to store user data and chat histories, while JWT and bcrypt handle authentication and password security. The project serves as a practical implementation for understanding how realtime communication and state synchronization work in web applications.`,
+    features: [
+      "Realtime messaging using Socket.io",
+      "User authentication with JWT and bcrypt",
+      "Responsive interface built with React and DaisyUI",
+      "Persistent message storage in MongoDB",
+      "Deployed on Render with MongoDB Atlas integration"
+    ],
+    challenges: [
+      "Handling message synchronization between multiple users in realtime",
+      "Managing socket connections and disconnections efficiently",
+      "Ensuring secure authentication and message handling"
+    ],
+    technologies: {
+      Frontend: ["Next.js", "React", "DaisyUI"],
+      Backend: ["Node.js", "Express.js", "RESTful APIs"],
+      Database: ["MongoDB", "Mongoose"],
+      Authentication: ["JWT", "bcrypt"],
+      Deployment: ["OnRender", "MongoDB Atlas"]
+    },
+    images: [
+      "/assets/chat1.png",
+      "/assets/chat2.png",
+      "/assets/chat3.png",
+      "/assets/chat4.png"
     ],
   },
   {

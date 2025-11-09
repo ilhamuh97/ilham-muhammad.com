@@ -35,7 +35,16 @@ const projects = [
   {
     slug: "saso-ecommerce",
     name: "SASO E-Commerce",
-    link: null,
+    link: "https://saso.iwkz.de/",
+    techStack: ["Next.js", "Node.js", "Ant Design", "MongoDB", "express.js"],
+    description:
+      "This website was developed as an ordering system for food and drinks at the annual SASO food festival organized by IWKZ e.V., first launched at SASO 2022. Initially serving a single event, the project later evolved into the IW-Commerce website with enhanced functionality to support multiple events.",
+    status: "done",
+  },
+  {
+    slug: "Chat App",
+    name: "Chat App",
+    link: "https://chat-app-ie23.onrender.com/",
     techStack: ["Next.js", "Node.js", "Ant Design", "MongoDB", "express.js"],
     description:
       "This website was developed as an ordering system for food and drinks at the annual SASO food festival organized by IWKZ e.V., first launched at SASO 2022. Initially serving a single event, the project later evolved into the IW-Commerce website with enhanced functionality to support multiple events.",
