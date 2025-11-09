@@ -45,7 +45,7 @@ const projects = [
     slug: "chat-app",
     name: "Chat App",
     link: "https://chat-app-ie23.onrender.com/",
-    techStack: ["Next.js", "Node.js", "socket.io", "DaisyUI", "MongoDB", "express.js"],
+    techStack: ["ReactJS", "Node.js", "socket.io", "DaisyUI", "MongoDB", "express.js"],
     description:
       "A realtime chat application developed with React.js and Node.js, featuring a clean DaisyUI interface and MongoDB-based message storage. This project was built for learning purposes to understand realtime web communication uisng socket.io and full-stack integration.",
     status: "done",

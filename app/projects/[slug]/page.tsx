@@ -92,7 +92,7 @@ Because the first version worked well, it later became IW-Commerce — a more fl
       "Creating an intuitive interface for diverse user demographics",
     ],
     technologies: {
-      Frontend: ["Next.js", "React", "Ant Design", "CSS3"],
+      Frontend: ["Next.js", "React", "Ant Design", "CSS3", "React Redux"],
       Backend: ["Node.js", "Express.js", "RESTful APIs"],
       Database: ["MongoDB", "Mongoose"],
       Authentication: ["JWT", "bcrypt"],
@@ -127,8 +127,8 @@ Because the first version worked well, it later became IW-Commerce — a more fl
       "Ensuring secure authentication and message handling"
     ],
     technologies: {
-      Frontend: ["Next.js", "React", "DaisyUI"],
-      Backend: ["Node.js", "Express.js", "RESTful APIs"],
+      Frontend: ["React", "DaisyUI", "socket client", "Zustand"],
+      Backend: ["Node.js", "Express.js", "RESTful APIs", "socket"],
       Database: ["MongoDB", "Mongoose"],
       Authentication: ["JWT", "bcrypt"],
       Deployment: ["OnRender", "MongoDB Atlas"]
