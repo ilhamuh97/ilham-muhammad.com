@@ -74,6 +74,7 @@ export function Hero() {
               visual computing
             </span>
             , from computer vision to data visualization. Let’s have a chat! <span className="text-cyan-400">☕</span>
+          </p>
 
           {/* Icon buttons */}
           <div
