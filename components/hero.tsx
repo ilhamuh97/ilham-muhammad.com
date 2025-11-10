@@ -61,12 +61,11 @@ export function Hero() {
             className="text-white/95 dark:text-white/95 text-sm sm:text-base leading-relaxed animate-fade-in-up drop-shadow-md"
             style={{ animationDelay: "0.2s" }}
           >
-            I am a{" "}
-            <span className="text-cyan-200 dark:text-cyan-400 font-semibold hover:text-cyan-300  transition-all duration-300 dark:hover:text-cyan-500">
-              website developer
+            I’m a{" "}
+            <span className="text-cyan-200 dark:text-cyan-400 font-semibold hover:text-cyan-300 transition-all duration-300 dark:hover:text-cyan-500">
+              software developer
             </span>{" "}
-            with a strong interest in visual computing, including fields like
-            computer vision, image processing, and data visualization.
+            who loves turning problems into digital solutions. I build web applications with JavaScript, TypeScript, Node.js, React, Angular, and Next.js, focusing on user-friendly interfaces, connected services, and interactive data. I’m also passionate about visual computing, including computer vision, image processing, and data visualization. If these topics excite you too, let’s have a chat!
           </p>
 
           {/* Icon buttons */}
