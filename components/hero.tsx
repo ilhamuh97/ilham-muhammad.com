@@ -63,9 +63,9 @@ export function Hero() {
           >
             I’m a{" "}
             <span className="text-cyan-200 dark:text-cyan-400 font-semibold hover:text-cyan-300 transition-all duration-300 dark:hover:text-cyan-500">
-              software developer
+            software developer
             </span>{" "}
-            who loves turning problems into digital solutions. I build web applications with JavaScript, TypeScript, Node.js, React, Angular, and Next.js, focusing on user-friendly interfaces, connected services, and interactive data. I’m also passionate about visual computing, including computer vision, image processing, and data visualization. If these topics excite you too, let’s have a chat!
+            who transforms problems into digital solutions. I build web apps and explore visual computing, from computer vision to data visualization. Let’s connect! <span role="img" aria-label="coffee">☕</span>
           </p>
 
           {/* Icon buttons */}
