@@ -62,11 +62,18 @@ export function Hero() {
             style={{ animationDelay: "0.2s" }}
           >
             I’m a{" "}
-            <span className="text-cyan-200 dark:text-cyan-400 font-semibold hover:text-cyan-300 transition-all duration-300 dark:hover:text-cyan-500">
-            software developer
+            <span className="text-cyan-400 dark:text-cyan-300 font-semibold hover:text-cyan-300 transition-all duration-300">
+              software developer
             </span>{" "}
-            who transforms problems into digital solutions. I build web apps and explore visual computing, from computer vision to data visualization. Let’s connect! <span role="img" aria-label="coffee">☕</span>
-          </p>
+            who turns problems into digital solutions. I build{" "}
+            <span className="text-purple-400 dark:text-purple-300 font-semibold hover:text-purple-300 transition-all duration-300">
+              web apps
+            </span>{" "}
+            and explore{" "}
+            <span className="text-yellow-400 dark:text-yellow-300 font-semibold hover:text-yellow-300 transition-all duration-300">
+              visual computing
+            </span>
+            , from computer vision to data visualization. Let’s have a chat! <span className="text-cyan-400">☕</span>
 
           {/* Icon buttons */}
           <div
