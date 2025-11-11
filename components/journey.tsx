@@ -20,8 +20,9 @@ const journeyItems = [
   {
     id: 2,
     type: "work",
-    title: "Frontend Developer Working Student",
-    organization: "Robert Bosch GmbH",
+    emplyomentType: "Working Student",
+    title: "Frontend Development & Consulting",
+    organization: "Bosch.io GmbH",
     location: "Berlin, Germany",
     period: "May 2023 - Apr 2025",
     description:
@@ -33,7 +34,8 @@ const journeyItems = [
   {
     id: 3,
     type: "work",
-    title: "Software Engineer Working Student",
+    emplyomentType: "Working Student",
+    title: "Software Engineering",
     organization: "daato GmbH",
     location: "Berlin, Germany",
     period: "Oct 2022 - Apr 2023",
@@ -46,12 +48,13 @@ const journeyItems = [
   {
     id: 4,
     type: "work",
-    title: "Frontend Developer Working Student",
+    emplyomentType: "Working Student",
+    title: "Software Development",
     organization: "i-ways sales solutions GmbH",
     location: "Berlin, Germany",
     period: "Apr 2020 - Mar 2022",
     description:
-      "Collaborated on frontend development for e-commerce websites using ReactJS, CakePHP, MySQL, HTML5, CSS3, and JavaScript. Ensured quality through testing and contributed in agile environments using Scrum and Kanban methodologies.",
+      "Collaborated on software development for e-commerce websites using ReactJS, CakePHP, MySQL, HTML5, CSS3, and JavaScript. Ensured quality through testing and contributed in agile environments using Scrum and Kanban methodologies.",
     icon: Briefcase,
     color: "from-red-500 to-orange-500",
     darkColor: "from-red-400 to-orange-400",
@@ -130,6 +133,17 @@ export function Journey() {
 
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const employmentPill = (et?: string) => {
+    if (!et) return null;
+    return (
+      <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] sm:text-xs font-medium
+                      border bg-gray-50 text-gray-700 border-gray-200
+                      dark:bg-gray-700/50 dark:text-gray-200 dark:border-gray-600">
+        {et}
+      </span>
+    );
+  };
 
   return (
     <section
@@ -285,15 +299,26 @@ export function Journey() {
                             >
                               {item.title}
                             </h3>
-                            <p
-                              className={`text-sm sm:text-base lg:text-lg font-semibold transition-all duration-500 ${
-                                isActive
-                                  ? `bg-gradient-to-r ${item.color} bg-clip-text text-transparent`
-                                  : "text-gray-600 dark:text-gray-500"
-                              }`}
-                            >
-                              {item.organization}
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <p
+                                className={`text-sm sm:text-base lg:text-lg font-semibold transition-all duration-500 ${
+                                  isActive
+                                    ? `bg-gradient-to-r ${item.color} bg-clip-text text-transparent`
+                                    : "text-gray-600 dark:text-gray-500"
+                                }`}
+                              >
+                                {item.organization}
+                              </p>
+                              <p
+                                className={`text-sm sm:text-base lg:text-lg leading-relaxed transition-colors duration-500 ${
+                                  isActive
+                                    ? "text-gray-800 dark:text-gray-300"
+                                    : "text-gray-600 dark:text-gray-500"
+                                }`}
+                              >
+                                {item.type === "work" && employmentPill((item as any).employmentType)}
                             </p>
+                            </div>
                           </div>
                         </div>
 
