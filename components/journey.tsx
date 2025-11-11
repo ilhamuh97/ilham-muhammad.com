@@ -309,15 +309,7 @@ export function Journey() {
                               >
                                 {item.organization}
                               </p>
-                              <p
-                                className={`text-sm sm:text-base lg:text-lg leading-relaxed transition-colors duration-500 ${
-                                  isActive
-                                    ? "text-gray-800 dark:text-gray-300"
-                                    : "text-gray-600 dark:text-gray-500"
-                                }`}
-                              >
-                                {item.type === "work" && employmentPill((item as any).employmentType)}
-                            </p>
+                              {item.type === "work" && employmentPill(item?.emplyomentType)}
                             </div>
                           </div>
                         </div>
