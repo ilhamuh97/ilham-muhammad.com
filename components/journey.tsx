@@ -299,18 +299,16 @@ export function Journey() {
                             >
                               {item.title}
                             </h3>
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <p
-                                className={`text-sm sm:text-base lg:text-lg font-semibold transition-all duration-500 ${
-                                  isActive
-                                    ? `bg-gradient-to-r ${item.color} bg-clip-text text-transparent`
-                                    : "text-gray-600 dark:text-gray-500"
-                                }`}
-                              >
-                                {item.organization}
-                              </p>
-                              {item.type === "work" && employmentPill(item?.emplyomentType)}
-                            </div>
+                            <p
+                              className={`text-sm sm:text-base lg:text-lg font-semibold transition-all duration-500 ${
+                                isActive
+                                  ? `bg-gradient-to-r ${item.color} bg-clip-text text-transparent`
+                                  : "text-gray-600 dark:text-gray-500"
+                              }`}
+                            >
+                              {item.organization}
+                            </p>
+                            {item.type === "work" && employmentPill(item?.emplyomentType)}
                           </div>
                         </div>
 
