@@ -137,7 +137,8 @@ Because the first version worked well, it later became IW-Commerce — a more fl
       "/assets/chat1.png",
       "/assets/chat2.png",
       "/assets/chat3.png",
-      "/assets/chat4.png"
+      "/assets/chat4.png",
+      "/assets/chat5.png"
     ],
   },
   {
