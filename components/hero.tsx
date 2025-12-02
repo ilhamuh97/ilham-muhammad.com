@@ -65,7 +65,11 @@ export function Hero() {
             <span className="text-cyan-400 dark:text-cyan-300 font-semibold hover:text-cyan-300 transition-all duration-300">
               software developer
             </span>{" "}
-            who turns problems into digital solutions. I build{" "}
+            who turns problems into digital solutions. Experienced and motivated in building software with modern JavaScript and TypeScript frameworks such as{" "}
+            <span className="text-purple-400 dark:text-purple-300 font-semibold hover:text-purple-300 transition-all duration-300">
+              React, Angular, Node.js, and Express
+            </span>
+            , I build{" "}
             <span className="text-purple-400 dark:text-purple-300 font-semibold hover:text-purple-300 transition-all duration-300">
               web apps
             </span>{" "}
@@ -73,7 +77,8 @@ export function Hero() {
             <span className="text-yellow-400 dark:text-yellow-300 font-semibold hover:text-yellow-300 transition-all duration-300">
               visual computing
             </span>
-            , from computer vision to data visualization. Let’s have a chat! <span className="text-cyan-400">☕</span>
+            , from computer vision to data visualization. Let’s have a chat!{" "}
+            <span className="text-cyan-400">☕</span>
           </p>
 
           {/* Icon buttons */}
@@ -100,7 +105,7 @@ export function Hero() {
               <FaGithub className="text-3xl" />
             </a>
             <a
-              href="mailto:ilham_muhammad@hotmail.com"
+              href="mailto:ilham-muhammad@hotmail.com"
               aria-label="Email"
               className="text-white hover:text-green-600 transition-colors"
             >
