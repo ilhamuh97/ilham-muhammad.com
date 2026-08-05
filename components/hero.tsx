@@ -4,7 +4,6 @@ import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { revealContainer, revealItem } from "@/lib/motion";
 import TextType from "@/components/TextType";
-import SideRays from "@/components/SideRays";
 import {
   heroSectionMeta,
   heroKicker,
@@ -24,21 +23,6 @@ export function Hero({ loaded = true }: HeroProps) {
       className="h-dvh relative flex items-center px-6 lg:px-10 overflow-hidden bg-background"
       style={{ scrollSnapAlign: "start" }}
     >
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <SideRays
-          origin="top-left"
-          rayColor1="#f97316"
-          rayColor2="#e5e5e5"
-          intensity={1.1}
-          spread={1.5}
-          speed={1.2}
-          saturation={1.1}
-          blend={0.5}
-          falloff={2.2}
-          opacity={0.45}
-        />
-      </div>
-
       <span
         aria-hidden
         className="absolute right-2 top-16 lg:top-8 select-none pointer-events-none font-display font-medium text-foreground/5 leading-none"

@@ -9,9 +9,9 @@ export const journeySectionMeta = {
 export const journeyItems = [
   {
     type: "work",
-    employmentType: "Full-Time",
+    current: true,
     title: "Full-Stack Engineering",
-    organization: "PT Jobindo Indonesia, Remote",
+    organization: "PT Jobindo Indonesia, Jakarta, Indonesia",
     period: "Jan 2026 – Present",
     description:
       "Developing a full-stack job portal remotely using Laravel, React, and Inertia.js with MySQL, delivering core features for job seekers, employers, and job postings. Built an admin dashboard for platform monitoring and management, added Recharts-based data visualizations for actionable engagement insights, and improved SEO through meta tags and structured data to increase job listing visibility.",
@@ -28,7 +28,6 @@ export const journeyItems = [
   },
   {
     type: "work",
-    employmentType: "Working Student",
     title: "Frontend Development & Consulting",
     organization: "Bosch.io GmbH, Berlin, Germany",
     period: "May 2023 – Apr 2025",
@@ -38,7 +37,6 @@ export const journeyItems = [
   },
   {
     type: "work",
-    employmentType: "Working Student",
     title: "Software Engineering",
     organization: "daato GmbH, Berlin, Germany",
     period: "Oct 2022 – Apr 2023",
@@ -48,7 +46,6 @@ export const journeyItems = [
   },
   {
     type: "work",
-    employmentType: "Working Student",
     title: "Software Development",
     organization: "i-ways sales solutions GmbH, Berlin, Germany",
     period: "Apr 2020 – Mar 2022",

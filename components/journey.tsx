@@ -12,7 +12,7 @@ export function Journey() {
   return (
     <section
       id="journey"
-      className="h-dvh flex flex-col px-6 lg:px-10 pt-24 pb-10 relative overflow-hidden bg-muted/40"
+      className="h-dvh flex flex-col px-4 sm:px-6 lg:px-10 pt-24 pb-10 relative overflow-hidden bg-muted/40"
       style={{ scrollSnapAlign: "start" }}
     >
       <span
@@ -50,17 +50,18 @@ export function Journey() {
                     </span>
                     <Icon className="h-4 w-4 text-muted-foreground shrink-0 hidden sm:block" />
                     <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <div className="flex items-center gap-2">
                         <h3 className="font-display font-medium text-foreground text-base sm:text-lg">
                           {item.title}
                         </h3>
-                        {item.employmentType && (
-                          <span className="font-mono text-[10px] uppercase tracking-wide border border-border rounded-full px-2 py-0.5 text-muted-foreground">
-                            {item.employmentType}
+                        {item.current && (
+                          <span className="relative flex h-2 w-2 shrink-0" title="Currently active">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-muted-foreground truncate">
+                      <p className="text-sm text-muted-foreground">
                         {item.organization}
                       </p>
                     </div>
@@ -70,7 +71,7 @@ export function Journey() {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="pl-9 sm:pl-16 pr-2 sm:pr-8">
+                  <div className="pl-2 sm:pl-16 pr-2 sm:pr-8">
                     <p className="sm:hidden font-mono text-xs text-muted-foreground mb-2">
                       {item.period}
                     </p>
