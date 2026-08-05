@@ -1,10 +1,6 @@
-export interface Project {
-  slug: string;
-  name: string;
-  link: string | null;
-  techStack: string[];
-  description: string;
-  status: "done" | "in progress";
+export type ProjectStatus = "done" | "in-progress" | "planned";
+
+export interface ProjectDetail {
   fullDescription: string;
   features: string[];
   challenges: string[];
@@ -12,6 +8,16 @@ export interface Project {
   images: string[];
 }
 
+export interface Project {
+  slug: string | null;
+  name: string;
+  link: string | null;
+  techStack: string[];
+  description: string;
+  status: ProjectStatus;
+  detail?: ProjectDetail;
+}
+
 export interface ProjectDetailProps {
-  project: Project;
+  project: Project & { detail: ProjectDetail };
 }

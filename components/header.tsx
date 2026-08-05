@@ -1,234 +1,147 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { EASE_OUT } from "@/lib/motion";
+import { navigationItems } from "@/data/navigation";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
-  // Initialize theme on component mount
+  // next-themes resolves the real theme after mount; rendering the icon before
+  // that would make the client's first paint diverge from the server's and
+  // trigger a hydration mismatch, so this guard is required, not optional.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => setMounted(true), []);
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
+    const mainEl = document.querySelector("main");
+    if (!mainEl) return;
 
-      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-        setIsDark(true);
-        document.documentElement.classList.add("dark");
-      } else {
-        setIsDark(false);
-        document.documentElement.classList.remove("dark");
-      }
-    }
+    const sections = navigationItems
+      .map((item) => document.getElementById(item.id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { root: mainEl, threshold: [0.5] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
+    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
-
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-
-    if (newTheme) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
 
   const scrollToSection = (sectionId: string) => {
     const mainElement = document.querySelector("main");
     const section = document.getElementById(sectionId);
 
     if (mainElement && section) {
-      const sectionTop = section.offsetTop;
-      mainElement.scrollTo({
-        top: sectionTop,
-        behavior: "smooth",
-      });
+      mainElement.scrollTo({ top: section.offsetTop, behavior: "smooth" });
     }
 
     setIsMenuOpen(false);
   };
 
-  const navigationItems = [
-    { name: "Home", id: "hero" },
-    { name: "Journey", id: "journey" },
-    { name: "Projects", id: "projects" },
-    { name: "Source", id: "github" },
-  ];
+  const isDark = mounted && resolvedTheme === "dark";
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/30 dark:bg-black/30 border-b border-white/20 dark:border-white/10 shadow-md transition-all duration-500 ease-in-out py-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className={`flex items-center justify-between transition-all duration-500 ease-in-out h-12 `}
+      <header className="fixed top-4 sm:top-6 inset-x-0 z-50 flex justify-center px-4">
+        <div className="flex items-center gap-1 rounded-full border border-border bg-background/80 backdrop-blur-md shadow-sm px-2 py-1.5">
+          <button
+            onClick={() => scrollToSection("hero")}
+            className="font-display text-sm font-semibold text-foreground px-3"
           >
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <button
-                onClick={() => scrollToSection("hero")}
-                className={`font-bold bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent hover:scale-105 transition-all duration-500 ease-in-out text-xl sm:text-2xl`}
-              >
-                Ilham
-              </button>
-            </div>
+            Ilham
+          </button>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:block">
-              <div className="flex items-center space-x-8">
-                {navigationItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`text-gray-700 dark:text-white/80 hover:text-gray-700 dark:hover:text-white px-3 py-2 font-medium transition-all duration-500 ease-in-out hover:scale-105 text-sm`}
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
-            </nav>
-
-            {/* Desktop Theme Toggle */}
-            <div className="hidden md:flex items-center space-x-4">
-              <Button
-                onClick={toggleTheme}
-                size="icon"
-                variant="outline"
-                className={`rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-lg hover:shadow-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-500 ease-in-out hover:scale-110 w-10 h-10`}
-                aria-label="Toggle theme"
-              >
-                {isDark ? (
-                  <Sun
-                    className={`text-yellow-500 transition-all duration-500 ease-in-out h-4 w-4`}
-                  />
-                ) : (
-                  <Moon
-                    className={`text-blue-600 transition-all duration-500 ease-in-out h-4 w-4`}
-                  />
-                )}
-              </Button>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center space-x-2">
-              {/* Mobile Theme Toggle */}
-              <Button
-                onClick={toggleTheme}
-                size="icon"
-                variant="outline"
-                className={`rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-lg hover:shadow-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-500 ease-in-out w-9 h-9`}
-                aria-label="Toggle theme"
-              >
-                {isDark ? (
-                  <Sun
-                    className={`text-yellow-500 transition-all duration-500 ease-in-out h-4 w-4`}
-                  />
-                ) : (
-                  <Moon
-                    className={`text-blue-600 transition-all duration-500 ease-in-out h-4 w-4`}
-                  />
-                )}
-              </Button>
-
-              {/* Hamburger Menu */}
-              <Button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                size="icon"
-                variant="outline"
-                className={`rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-lg hover:shadow-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-500 ease-in-out w-9 h-9`}
-                aria-label="Toggle menu"
-              >
-                {isMenuOpen ? (
-                  <X
-                    className={`text-white transition-all duration-500 ease-in-out h-4 w-4`}
-                  />
-                ) : (
-                  <Menu
-                    className={`text-gray-700 dark:text-gray-300 transition-all duration-500 ease-in-out h-4 w-4`}
-                  />
-                )}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Full Screen Mobile Navigation Overlay */}
-      <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ease-in-out ${
-          isMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
-      >
-        {/* Background Overlay */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br from-purple-900/95 via-blue-900/95 to-indigo-900/95 dark:from-black/95 dark:via-purple-950/95 dark:to-black/95 backdrop-blur-xl transition-all duration-500 ease-in-out ${
-            isMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setIsMenuOpen(false)}
-        />
-
-        {/* Navigation Content */}
-        <div
-          className="relative h-dvh flex flex-col items-center justify-center px-8"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          {/* Navigation Items */}
-          <nav className="flex flex-col items-center space-y-8">
-            {navigationItems.map((item, index) => (
+          <nav className="hidden md:flex items-center gap-1">
+            {navigationItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-white text-3xl sm:text-4xl lg:text-5xl font-bold hover:text-yellow-300 dark:hover:text-yellow-400 transition-all duration-300 hover:scale-110 transform ${
-                  isMenuOpen
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{
-                  transitionDelay: isMenuOpen
-                    ? `${index * 100 + 200}ms`
-                    : "0ms",
-                  transitionDuration: "600ms",
-                }}
+                className={cn(
+                  "relative rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors",
+                  activeSection === item.id
+                    ? "text-background"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
               >
-                {item.name}
+                {activeSection === item.id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-foreground"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{item.name}</span>
               </button>
             ))}
           </nav>
 
-          <div
-            className={`absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl transition-all duration-1000 ${
-              isMenuOpen ? "opacity-100 scale-100" : "opacity-0 scale-50"
-            }`}
-            style={{ transitionDelay: isMenuOpen ? "800ms" : "0ms" }}
-          />
-          <div
-            className={`absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-xl transition-all duration-1000 ${
-              isMenuOpen ? "opacity-100 scale-100" : "opacity-0 scale-50"
-            }`}
-            style={{ transitionDelay: isMenuOpen ? "1000ms" : "0ms" }}
-          />
+          <div className="flex items-center gap-1 pl-1">
+            <button
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              aria-label="Toggle theme"
+              className="h-8 w-8 flex items-center justify-center rounded-full text-foreground/70 hover:text-foreground hover:bg-muted transition-colors"
+            >
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+
+            <button
+              onClick={() => setIsMenuOpen((open) => !open)}
+              aria-label="Toggle menu"
+              className="md:hidden h-8 w-8 flex items-center justify-center rounded-full text-foreground/70 hover:text-foreground hover:bg-muted transition-colors"
+            >
+              {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 md:hidden bg-foreground flex flex-col items-center justify-center gap-8"
+          >
+            {navigationItems.map((item, index) => (
+              <motion.button
+                key={item.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.06 + 0.1, duration: 0.4, ease: EASE_OUT }}
+                onClick={() => scrollToSection(item.id)}
+                className="font-display text-4xl font-medium text-background"
+              >
+                {item.name}
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

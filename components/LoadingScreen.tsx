@@ -2,35 +2,41 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { EASE_OUT } from "@/lib/motion";
 
-export default function LoadingScreen() {
+interface LoadingScreenProps {
+  onComplete?: () => void;
+}
+
+export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(false), 2000);
+    const timer = setTimeout(() => setIsVisible(false), 1300);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onComplete}>
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
-          className="fixed inset-0 z-[100] bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 flex items-center justify-center text-white text-3xl font-bold"
+          transition={{ duration: 0.5 }}
+          className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center gap-6"
         >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-center"
-          >
-            {/* Spinner */}
-            <div className="w-16 h-16 border-8 border-transparent border-t-purple-400 border-r-blue-500 rounded-full animate-spin" />
-          </motion.div>
+          <span className="font-display text-2xl font-semibold text-foreground">
+            Ilham
+          </span>
+          <div className="h-px w-40 bg-border overflow-hidden">
+            <motion.div
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 1.1, ease: EASE_OUT }}
+              className="h-full bg-accent"
+            />
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

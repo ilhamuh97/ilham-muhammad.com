@@ -1,46 +1,58 @@
 "use client";
 
-import { Github, Heart } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { EASE_OUT } from "@/lib/motion";
+import { githubSectionMeta, githubRepo, githubCopyright } from "@/data/github";
 
 export function GitHubLink() {
   return (
     <section
       id="github"
-      className="h-dvh flex flex-col items-center justify-center px-4 pt-20 bg-gradient-to-br from-indigo-500 via-sky-500 to-indigo-500 dark:from-black dark:via-sky-950 dark:to-black relative overflow-hidden"
+      className="h-dvh flex flex-col px-6 lg:px-10 pt-24 pb-8 relative overflow-hidden bg-muted/40"
       style={{ scrollSnapAlign: "start" }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-2xl mx-auto text-center flex-1 flex flex-col justify-center relative z-10"
+      <span
+        aria-hidden
+        className="absolute right-2 top-8 select-none pointer-events-none font-display font-medium text-foreground/5 leading-none"
+        style={{ fontSize: "clamp(6rem, 14vw, 11rem)" }}
       >
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 text-white animate-fade-in-down">
-          View Source Code
-        </h2>
+        {githubSectionMeta.index}
+      </span>
 
-        <a
-          href="https://github.com/ilhamuh97/new-ilham-muhammad"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-4 px-8 py-6 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 group hover:scale-105 hover:bg-white/20 dark:hover:bg-white/10 animate-fade-in-up"
+      <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col items-center justify-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: EASE_OUT }}
+          className="text-center"
         >
-          <Github className="w-10 h-10 text-sky-200 group-hover:text-sky-800 dark:text-sky-600 dark:group-hover:text-sky-300 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
-          <div className="text-left">
-            <p className="font-bold text-sky-200 group-hover:text-sky-800 dark:text-sky-600 dark:group-hover:text-sky-300 transition-colors duration-300 text-lg sm:text-xl lg:text-2xl">
-              Portfolio Website
-            </p>
-            <p className="text-sm sm:text-base lg:text-lg text-sky-200/80 group-hover:text-sky-800 dark:text-sky-600/80 dark:group-hover:text-sky-300 transition-colors duration-300">
-              View on GitHub
-            </p>
-          </div>
-        </a>
-      </motion.div>
-      <div className="py-8 w-full border-t border-white/20 dark:border-white/10 mt-auto relative z-10">
-        <p className="text-xs sm:text-sm lg:text-base text-white/70 dark:text-white/60 text-center flex items-center justify-center gap-2">
-          © 2025 ilhamuh97
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+            {githubSectionMeta.kicker}
+          </p>
+          <h2 className="font-display font-medium text-foreground text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-10">
+            {githubSectionMeta.heading}
+          </h2>
+
+          <a
+            href={githubRepo.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-4 rounded-lg border border-border px-8 py-5 hover:border-accent transition-colors"
+          >
+            <FaGithub className="w-8 h-8 text-foreground group-hover:text-accent transition-colors" />
+            <div className="text-left">
+              <p className="font-medium text-foreground">{githubRepo.label}</p>
+              <p className="text-sm text-muted-foreground">{githubRepo.subLabel}</p>
+            </div>
+          </a>
+        </motion.div>
+      </div>
+
+      <div className="pt-6 w-full border-t border-border relative z-10">
+        <p className="text-xs sm:text-sm text-muted-foreground text-center font-mono">
+          {githubCopyright}
         </p>
       </div>
     </section>
