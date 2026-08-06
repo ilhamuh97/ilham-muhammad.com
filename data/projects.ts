@@ -11,7 +11,7 @@ export const projects: Project[] = [
     slug: "classifyai",
     name: "ClassifyAI",
     link: "https://classify-ai.vercel.app/",
-    techStack: ["React", "Tensorflow.js", "p5.js", "Ant Design", "ApexCharts"],
+    techStack: ["React", "Tensorflow.js", "p5.js"],
     description:
         "The ClassifyAI web-based application enables users to create image classification models through a simple, code-free interface, accessible on both desktop and mobile devices. It guides users through four main steps: class creation, parameter setup, training, and real-time prediction testing.",
     status: "done",
