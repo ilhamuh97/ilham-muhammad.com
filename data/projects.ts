@@ -44,15 +44,14 @@ The app guides users through four clear steps:
         "Implementing real-time training visualizations",
       ],
       technologies: {
-        Frontend: ["React", "JavaScript", "HTML5", "CSS3"],
+        Frontend: ["React", "Typescript", "Tailwind", "Shadcn"],
         "Machine Learning": [
           "TensorFlow.js",
           "Image Classification",
           "Transfer Learning",
         ],
-        Visualization: ["p5.js", "ApexCharts"],
-        "UI Framework": ["Ant Design"],
-        Development: ["Webpack", "Babel", "ESLint"],
+        Visualization: ["p5.js"],
+        Development: ["Netlify"],
       },
       images: [
         "/assets/classifyai1.png",
@@ -102,7 +101,7 @@ The whole stack is containerized with Docker and managed through Portainer, maki
         "Orchestrating multiple containerized services reliably with Docker and Portainer",
       ],
       technologies: {
-        Frontend: ["Next.js", "Tailwind","TypeScript"],
+        Frontend: ["Next.js", "Tailwind","TypeScript", "Zustand"],
         Backend: ["Strapi"],
         Database: ["MySQL", "NocoDB"],
         Deployment: ["VPS", "Portainer", "Docker", "Nginx Manager", "GitHub Action"],
@@ -172,7 +171,7 @@ The backend is built with Java 25, Spring Boot 4, and Spring AI for OpenAI chat 
           "Flyway",
           "Lombok",
         ],
-        Database: ["PostgreSQL", "pgvector", "PG-Admin"],
+        Database: ["PostgreSQL", "Supabase", "pgvector", "PG-Admin"],
         Storage: ["Cloudinary"],
         Deployment: ["Render", "Docker", "GitHub Action"],
       },
