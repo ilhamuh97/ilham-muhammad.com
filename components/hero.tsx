@@ -40,11 +40,12 @@ export function Hero({ loaded = true }: HeroProps) {
         >
           <motion.div
             variants={revealItem}
-            className="relative w-36 h-36 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-2xl border border-border overflow-hidden group"
+            className="relative w-36 h-36 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-2xl overflow-hidden group"
           >
             <div
               className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105 bg-[url('/assets/ilham-muhammad-day.jpg')] dark:bg-[url('/assets/ilham-muhammad-night.jpg')]"
             />
+            <div className="absolute inset-0 rounded-2xl pointer-events-none transition-shadow duration-500 shadow-[inset_0_2px_12px_rgba(0,0,0,0.35)] group-hover:shadow-[inset_0_2px_18px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_2px_16px_rgba(0,0,0,0.7)] dark:group-hover:shadow-[inset_0_2px_22px_rgba(0,0,0,0.85)]" />
           </motion.div>
 
           <motion.div variants={revealItem} className="flex items-center gap-4 sm:gap-5">
