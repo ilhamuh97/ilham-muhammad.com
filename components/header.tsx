@@ -66,7 +66,7 @@ export function Header() {
   return (
     <>
       <header className="fixed top-4 sm:top-6 inset-x-0 z-50 flex justify-center px-4">
-        <div className="flex items-center gap-1 rounded-full border border-border bg-background/80 backdrop-blur-md shadow-sm px-2 py-1.5">
+        <div className="flex items-center gap-1 rounded-full border border-border/60 bg-background/50 backdrop-blur-xl backdrop-saturate-150 shadow-lg shadow-black/5 dark:shadow-black/20 px-2 py-1.5">
           <button
             onClick={() => scrollToSection("hero")}
             className="font-display text-sm font-semibold text-foreground px-3"
