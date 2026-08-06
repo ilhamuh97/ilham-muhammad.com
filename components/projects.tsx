@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { EASE_OUT } from "@/lib/motion";
 import { projects, projectsSectionMeta } from "@/data/projects";
-import type { Project } from "@/app/types/project";
+import type { Project } from "@/types/project";
 
 const STATUS_LABEL: Record<Project["status"], string> = {
   done: "Done",
@@ -41,12 +41,12 @@ function ProjectCard({ project }: { project: Project }) {
             alt={`${project.name} screenshot`}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <span
-              className="font-display font-medium text-accent/25 dark:text-accent/35 select-none"
+              className="font-display font-medium select-none"
               style={{ fontSize: "clamp(2rem, 6vw, 3rem)" }}
             >
               {getInitials(project.name)}
