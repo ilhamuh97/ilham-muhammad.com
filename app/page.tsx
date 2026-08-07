@@ -6,6 +6,7 @@ import { Hero } from "@/components/hero";
 import { Journey } from "@/components/journey";
 import { Projects } from "@/components/projects";
 import { GitHubLink } from "@/components/github-link";
+import { SectionTransition } from "@/components/section-transition";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import LoadingScreen from "@/components/LoadingScreen";
 
@@ -21,8 +22,11 @@ export default function Portfolio() {
         style={{ scrollSnapType: "y mandatory" }}
       >
         <Hero loaded={loaded} />
+        <SectionTransition variant="toMuted" />
         <Journey />
+        <SectionTransition variant="toBackground" />
         <Projects />
+        <SectionTransition variant="toMuted" />
         <GitHubLink />
       </main>
       <ScrollToTop />
