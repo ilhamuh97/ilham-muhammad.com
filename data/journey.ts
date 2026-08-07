@@ -19,6 +19,15 @@ export const journeyItems = [
   },
   {
     type: "education",
+    title: "Java Development Bootcamp",
+    organization: "neuefische GmbH, Germany",
+    period: "May 2026 – Aug 2026",
+    description:
+      "Completed an intensive 16-week Weiterbildung program in Java development, covering the fundamentals of Java, Spring Boot, SQL and NoSQL databases with PostgreSQL and MongoDB, DevOps with Docker, and CI/CD using GitHub Actions, plus frontend development with React and TypeScript. Further lesson content included clean code practices, working in pairs and groups, Git workflow with GitHub, agile methods with Scrum and Kanban, and IntelliJ.",
+    icon: GraduationCap,
+  },
+  {
+    type: "education",
     title: "International Media and Computing (MSc)",
     organization: "University of Applied Sciences, Berlin, Germany",
     period: "Apr 2021 – Apr 2025",
