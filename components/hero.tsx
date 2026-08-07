@@ -1,9 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { revealContainer, revealItem } from "@/lib/motion";
 import TextType from "@/components/TextType";
+import DotField from "@/components/DotField";
 import {
   heroSectionMeta,
   heroKicker,
@@ -17,12 +20,49 @@ interface HeroProps {
 }
 
 export function Hero({ loaded = true }: HeroProps) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const mql = window.matchMedia("(max-width: 640px)");
+    setIsMobile(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+  const dotColors = isDark
+    ? { gradientFrom: "rgba(212, 212, 212, 0.4)", gradientTo: "rgba(163, 163, 163, 0.18)" }
+    : { gradientFrom: "rgba(38, 38, 38, 0.35)", gradientTo: "rgba(82, 82, 82, 0.15)" };
+
   return (
     <section
       id="hero"
       className="h-dvh relative flex items-center px-6 lg:px-10 overflow-hidden bg-background"
       style={{ scrollSnapAlign: "start" }}
     >
+      {mounted && (
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            WebkitMaskImage: "radial-gradient(ellipse at center, black 0%, black 35%, transparent 70%)",
+            maskImage: "radial-gradient(ellipse at center, black 0%, black 35%, transparent 70%)",
+          }}
+        >
+          <DotField
+            dotRadius={isMobile ? 1.2 : 1.5}
+            dotSpacing={isMobile ? 20 : 30}
+            cursorRadius={isMobile ? 260 : 500}
+            bulgeStrength={isMobile ? 40 : 65}
+            glow={false}
+            sparkle
+            {...dotColors}
+          />
+        </div>
+      )}
       <span
         aria-hidden
         className="absolute right-2 top-16 lg:top-8 select-none pointer-events-none font-display font-medium text-foreground/5 leading-none"
@@ -45,7 +85,7 @@ export function Hero({ loaded = true }: HeroProps) {
             <div
               className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105 bg-[url('/assets/ilham-muhammad-day.jpg')] dark:bg-[url('/assets/ilham-muhammad-night.jpg')]"
             />
-            <div className="absolute inset-0 rounded-2xl pointer-events-none transition-shadow duration-500 shadow-[inset_0_2px_12px_rgba(0,0,0,0.35)] group-hover:shadow-[inset_0_2px_18px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_2px_16px_rgba(0,0,0,0.7)] dark:group-hover:shadow-[inset_0_2px_22px_rgba(0,0,0,0.85)]" />
+            <div className="absolute inset-0 rounded-2xl pointer-events-none transition-shadow duration-500 shadow-[inset_0_2px_12px_rgba(0,0,0,0.35)] group-hover:shadow-[inset_0_2px_18px_rgba(0,0,0,0.5)] dark:group-hover:shadow-[inset_0_2px_22px_rgba(0,0,0,0.85)]" />
           </motion.div>
 
           <motion.div variants={revealItem} className="flex items-center gap-4 sm:gap-5">
