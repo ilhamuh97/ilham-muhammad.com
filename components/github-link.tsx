@@ -37,8 +37,8 @@ export function GitHubLink() {
         <div
           className="absolute inset-0 z-0"
           style={{
-            WebkitMaskImage: "linear-gradient(to bottom, transparent, black 25%)",
-            maskImage: "linear-gradient(to bottom, transparent, black 25%)",
+            WebkitMaskImage: "radial-gradient(ellipse at center, black 0%, black 35%, transparent 70%)",
+            maskImage: "radial-gradient(ellipse at center, black 0%, black 35%, transparent 70%)",
           }}
         >
           <DotField
