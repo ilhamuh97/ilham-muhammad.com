@@ -24,7 +24,7 @@ export function Journey() {
       </span>
 
       <div className="max-w-4xl mx-auto w-full relative z-10 flex flex-col flex-1 min-h-0">
-        <div className="flex-shrink-0 mb-6 sm:mb-8">
+        <div className="shrink-0 mb-6 sm:mb-8">
           <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-2">
             {journeySectionMeta.kicker}
           </p>
@@ -38,6 +38,10 @@ export function Journey() {
           collapsible
           defaultValue="item-0"
           className="flex-1 min-h-0 overflow-y-auto scrollbar-hide"
+          style={{
+            WebkitMaskImage: "linear-gradient(to bottom, transparent, black 8%, black 95%, transparent)",
+            maskImage: "linear-gradient(to bottom, transparent, black 8%, black 95%, transparent)",
+          }}
         >
           {journeyItems.map((item, index) => {
             const Icon = item.icon;
