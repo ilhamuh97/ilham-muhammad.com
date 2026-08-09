@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { ProjectDetail } from "@/components/projectDetails";
 import { getProjectBySlug, getProjectSlugs } from "@/data/projects";
+import { siteMetadata } from "@/data/site";
 
 interface ProjectPageProps {
   params: Promise<{
@@ -33,8 +34,27 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     };
   }
 
+  const url = `${siteMetadata.siteUrl}/projects/${slug}`;
+  const image = project.detail?.images?.[0];
+
   return {
-    title: `${project.name} | Ilham Muhammad`,
+    title: project.name,
     description: project.description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "article",
+      url,
+      title: project.name,
+      description: project.description,
+      images: image ? [{ url: image }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.name,
+      description: project.description,
+      images: image ? [image] : undefined,
+    },
   };
 }

@@ -26,7 +26,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: siteMetadata.title,
+  metadataBase: new URL(siteMetadata.siteUrl),
+  title: {
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.authorName}`,
+  },
   description: siteMetadata.description,
   generator: "Next.js",
   applicationName: siteMetadata.applicationName,
@@ -34,6 +38,39 @@ export const metadata: Metadata = {
   authors: [{ name: siteMetadata.authorName, url: siteMetadata.authorUrl }],
   creator: siteMetadata.authorName,
   publisher: siteMetadata.authorName,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: siteMetadata.siteUrl,
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    siteName: siteMetadata.applicationName,
+    locale: siteMetadata.locale,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteMetadata.authorName,
+  url: siteMetadata.siteUrl,
+  jobTitle: "Software Engineer",
+  sameAs: siteMetadata.socialProfiles,
 };
 
 export default function RootLayout({
@@ -48,6 +85,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
