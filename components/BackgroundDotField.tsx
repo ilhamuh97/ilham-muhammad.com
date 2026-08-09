@@ -23,7 +23,7 @@ export function BackgroundDotField() {
   const isDark = resolvedTheme === "dark";
   const dotColors = isDark
     ? { gradientFrom: "rgba(212, 212, 212, 0.4)", gradientTo: "rgba(163, 163, 163, 0.18)" }
-    : { gradientFrom: "rgba(38, 38, 38, 0.35)", gradientTo: "rgba(82, 82, 82, 0.15)" };
+    : { gradientFrom: "rgba(0, 0, 0, 0.5)", gradientTo: "rgba(23, 23, 23, 0.25)" };
 
   return (
     <div
@@ -39,6 +39,7 @@ export function BackgroundDotField() {
         cursorRadius={isMobile ? 260 : 500}
         bulgeStrength={isMobile ? 40 : 65}
         glow={false}
+        waveAmplitude={20}
         sparkle
         {...dotColors}
       />

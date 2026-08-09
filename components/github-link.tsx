@@ -41,7 +41,7 @@ export function GitHubLink() {
             href={githubRepo.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-4 rounded-lg border border-border px-8 py-5 transition-all duration-300 hover:border-accent hover:bg-background/40 hover:backdrop-blur-md hover:shadow-lg"
+            className="group inline-flex items-center gap-4 rounded-lg border border-border bg-background px-8 py-5 transition-all duration-300 hover:scale-105 hover:border-accent hover:shadow-2xl hover:shadow-accent/30"
           >
             <FaGithub className="w-8 h-8 text-foreground group-hover:text-accent transition-colors" />
             <div className="text-left">
