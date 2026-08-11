@@ -37,7 +37,7 @@ export function Journey() {
           type="single"
           collapsible
           defaultValue="item-0"
-          className="flex-1 min-h-0 overflow-y-auto scrollbar-hide"
+          className="flex-1 min-h-0 overflow-y-auto scrollbar-hide pt-4"
           style={{
             WebkitMaskImage: "linear-gradient(to bottom, transparent, black 8%, black 95%, transparent)",
             maskImage: "linear-gradient(to bottom, transparent, black 8%, black 95%, transparent)",
