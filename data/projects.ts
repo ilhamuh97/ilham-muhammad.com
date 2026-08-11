@@ -116,19 +116,19 @@ The whole stack is containerized with Docker and managed through Portainer, maki
     },
   },
   {
-    slug: "dish-rag",
-    name: "Dish RAG",
-    link: "https://indo-dish-1.onrender.com",
+    slug: "recipegpt",
+    name: "RecipeGPT",
+    link: "https://recipegpt-n9jr.onrender.com",
     techStack: [
       "React.js",
       "Java SpringBoot",
       "Docker",
     ],
     description:
-        "Dish RAG is a full-stack RAG (retrieval-augmented generation) chatbot for exploring food recipes. Users chat in natural language, and the assistant retrieves relevant recipes from a Postgres/pgvector store, answers questions about them, and can search, look up, and manage favorites on the user's behalf via tool calling.",
+        "RecipeGPT is a full-stack RAG (retrieval-augmented generation) chatbot for exploring food recipes. Users chat in natural language, and the assistant retrieves relevant recipes from a Postgres/pgvector store, answers questions about them, and can search, look up, and manage favorites on the user's behalf via tool calling.",
     status: "done",
     detail: {
-      fullDescription: `Dish RAG is a full-stack RAG (retrieval-augmented generation) chatbot for exploring food recipes. Users chat in natural language, and the assistant retrieves relevant recipes from a Postgres/pgvector store, answers questions about them, and can search, look up, and manage favorites on the user's behalf via tool calling.
+      fullDescription: `RecipeGPT is a full-stack RAG (retrieval-augmented generation) chatbot for exploring food recipes. Users chat in natural language, and the assistant retrieves relevant recipes from a Postgres/pgvector store, answers questions about them, and can search, look up, and manage favorites on the user's behalf via tool calling.
 
 Beyond the chat itself, the app keeps a full conversation history per user, with renaming, pinning, and deleting conversations, and titles that are auto-generated from the first message. A separate recipe browsing view offers a paginated, sortable, and searchable list with autocomplete, plus a personal favorites collection.
 
