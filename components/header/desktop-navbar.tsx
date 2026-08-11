@@ -48,6 +48,7 @@ export function DesktopNavbar({ activeSection, onNavigate }: DesktopNavbarProps)
 
         <LogoButton
           ref={logoRef}
+          large={!scrolled}
           onClick={() => onNavigate("hero")}
           style={{
             transition: `transform ${TRANSITION_MS}ms ${EASE_IN_OUT_CSS}, color 150ms`,
