@@ -10,7 +10,7 @@ export const projects: Project[] = [
   {
     slug: "classifyai",
     name: "ClassifyAI",
-    link: "https://classify-ai.vercel.app/",
+    link: "https://classify-ai.ilham-muhammad.com",
     techStack: ["React", "Tensorflow.js", "p5.js"],
     description:
         "The ClassifyAI web-based application enables users to create image classification models through a simple, code-free interface, accessible on both desktop and mobile devices. It guides users through four main steps: class creation, parameter setup, training, and real-time prediction testing.",
@@ -116,19 +116,19 @@ The whole stack is containerized with Docker and managed through Portainer, maki
     },
   },
   {
-    slug: "recipegpt",
-    name: "RecipeGPT",
-    link: "https://recipegpt-n9jr.onrender.com",
+    slug: "dishrag",
+    name: "DishRAG",
+    link: "https://dishrag.ilham-muhammad.com",
     techStack: [
       "React.js",
       "Java SpringBoot",
       "Docker",
     ],
     description:
-        "RecipeGPT is a full-stack RAG (retrieval-augmented generation) chatbot for exploring food recipes. Users chat in natural language, and the assistant retrieves relevant recipes from a Postgres/pgvector store, answers questions about them, and can search, look up, and manage favorites on the user's behalf via tool calling.",
+        "DishRAG is a full-stack RAG (retrieval-augmented generation) chatbot for exploring food recipes. Users chat in natural language, and the assistant retrieves relevant recipes from a Postgres/pgvector store, answers questions about them, and can search, look up, and manage favorites on the user's behalf via tool calling.",
     status: "done",
     detail: {
-      fullDescription: `RecipeGPT is a full-stack RAG (retrieval-augmented generation) chatbot for exploring food recipes. Users chat in natural language, and the assistant retrieves relevant recipes from a Postgres/pgvector store, answers questions about them, and can search, look up, and manage favorites on the user's behalf via tool calling.
+      fullDescription: `DishRAG is a full-stack RAG (retrieval-augmented generation) chatbot for exploring food recipes. Users chat in natural language, and the assistant retrieves relevant recipes from a Postgres/pgvector store, answers questions about them, and can search, look up, and manage favorites on the user's behalf via tool calling.
 
 Beyond the chat itself, the app keeps a full conversation history per user, with renaming, pinning, and deleting conversations, and titles that are auto-generated from the first message. A separate recipe browsing view offers a paginated, sortable, and searchable list with autocomplete, plus a personal favorites collection.
 
@@ -186,9 +186,9 @@ The backend is built with Java 25, Spring Boot 4, and Spring AI for OpenAI chat 
     },
   },
   {
-    slug: "chat-app",
-    name: "Chat Application",
-    link: "https://chat-app-ie23.onrender.com/",
+    slug: "chatify",
+    name: "Chatify",
+    link: "https://chatify.ilham-muhammad.com",
     techStack: [
       "React.js",
       "Node.js",
