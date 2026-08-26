@@ -29,5 +29,5 @@ export const heroBio: HeroBioSegment[] = [
 export const heroSocialLinks = {
   linkedin: "https://www.linkedin.com/in/ilhammuhammad-735b2b187/",
   github: "https://github.com/ilhamuh97",
-  email: "mailto:ilham-muhammad@hotmail.com",
+  email: "mailto:personal@ilham-muhammad.com",
 };
